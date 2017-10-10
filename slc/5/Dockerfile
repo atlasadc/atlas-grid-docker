@@ -1,4 +1,4 @@
-FROM desalvo/slc5
+FROM atlasadc/slc5
 ENV HEP_OSLIBS_VER 1.0.3-0
 ENV UMD_REL_VER 3.0.1-1.el5
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
