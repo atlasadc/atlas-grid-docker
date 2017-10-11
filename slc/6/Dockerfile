@@ -15,5 +15,8 @@ RUN yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updat
 RUN yum -y install gfal2-all gfal2-util xrootd-client lcg-util
 RUN yum -y update
 
+# Remove unuseful stuff
+RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
+
 # Create site dirs
 RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates
