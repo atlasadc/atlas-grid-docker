@@ -1,6 +1,7 @@
 FROM atlasadc/slc6
 ENV HEP_OSLIBS_VER 1.0.19-0.el6
 ENV UMD_REL_VER 4.1.3-1.el6
+ENV TIMESTAMP 2017101101
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
@@ -17,6 +18,9 @@ RUN yum -y update
 
 # Remove unuseful stuff
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
+
+# Timestamp
+RUN touch /creation-date-${TIMESTAMP}
 
 # Create site dirs
 RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates

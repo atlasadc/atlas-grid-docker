@@ -1,6 +1,7 @@
 FROM centos:7
 ENV HEP_OSLIBS_VER 7.1.9-0.el7.cern
 ENV UMD_REL_VER 4.1.3-1.el7.centos
+ENV TIMESTAMP 2017101101
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
@@ -17,6 +18,9 @@ RUN yum -y update
 
 # Remove unuseful stuff
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
+
+# Timestamp
+RUN touch  /creation-date-${TIMESTAMP}
 
 # Create site dirs
 RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates
