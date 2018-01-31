@@ -1,7 +1,7 @@
 FROM centos:7
 ENV HEP_OSLIBS_VER 7.1.9-0.el7.cern
 ENV UMD_REL_VER 4.1.3-1.el7.centos
-ENV TIMESTAMP 2017101101
+ENV TIMESTAMP 2018013101
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
