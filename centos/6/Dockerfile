@@ -14,7 +14,15 @@ RUN yum -y install epel-release binutils-devel python-devel
 RUN yum -y install http://linuxsoft.cern.ch/wlcg/sl6/x86_64/HEP_OSlibs_SL6-${HEP_OSLIBS_VER}.x86_64.rpm
 RUN yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm
 RUN yum -y install gfal2-all gfal2-util xrootd-client lcg-util
+RUN yum -y install java-1.8.0-openjdk lsof
+
+# Kerberos
+RUN yum -y install krb5-libs krb5-workstation
+COPY krb5.conf /etc
+
+# Final update and creation of the package list
 RUN yum -y update
+RUN rpm -qa > /var/lib/package-list
 
 # Remove unuseful stuff
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
@@ -23,4 +31,4 @@ RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/*
 RUN touch  /creation-date-${TIMESTAMP}
 
 # Create site dirs
-RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor
+RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /srv /alrb

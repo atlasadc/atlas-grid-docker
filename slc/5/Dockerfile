@@ -16,7 +16,15 @@ RUN wget http://repository.egi.eu/sw/production/umd/3/sl5/x86_64/updates/umd-rel
 RUN yum -y --nogpg localinstall umd-release-${UMD_REL_VER}.noarch.rpm
 RUN rm -f umd-release-${UMD_REL_VER}.noarch.rpm
 RUN yum -y install gfal2-all gfal2-util xrootd-client lcg-util
+RUN yum -y install java-1.7.0-openjdk lsof
+
+# Kerberos
+RUN yum -y install krb5-libs krb5-workstationnnnn
+COPY krb5.conf /etc
+
+# Final update and creation of the package list
 RUN yum -y update
+RUN rpm -qa > /var/lib/package-list
 
 # Remove unuseful stuff
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
@@ -25,4 +33,4 @@ RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/*
 RUN touch  /creation-date-${TIMESTAMP}
 
 # Create site dirs
-RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /atlashome
+RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /atlashome /srv /alrb
