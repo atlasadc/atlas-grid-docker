@@ -71,7 +71,9 @@ if [ $cmdrc -eq 0 ] ; then
   echo "Stripping image"
   sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity exec --writable -C ${TMPDIR}/${OUTIMG}.img.0 rm -fr /var/lib/yum /var/cache/yum /usr/lib/locale /usr/share/locale /usr/share/doc /boot
   echo "Adding timestamp"
-  sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity exec --writable -C ${TMPDIR}/${OUTIMG}.img.0 touch /singularity-timestamp-${TS}
+  sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity exec --writable -C ${TMPDIR}/${OUTIMG}.img.0 /bin/sh -c "echo $TS > /singularity-creation-date" 
+  sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity exec --writable -C ${TMPDIR}/${OUTIMG}.img.0 /bin/sh -c 'echo "export CDATE_SINGULARITY=\"`cat /singularity-creation-date`\"" >> /etc/profile.d/container-date.sh'
+  sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity exec --writable -C ${TMPDIR}/${OUTIMG}.img.0 /bin/sh -c 'echo "setenv CDATE_SINGULARITY \"`cat /singularity-creation-date`\"" >> /etc/profile.d/container-date.csh'
   if [ $? -eq 0 ] ; then
     echo "Converting image ${TMPDIR}/${OUTIMG}.img.0 to ${TMPDIR}/${OUTIMG}.img"
     sudo SINGULARITY_CACHEDIR=$SINGULARITY_CACHEDIR singularity build ${TMPDIR}/${OUTIMG}.img ${TMPDIR}/${OUTIMG}.img.0
