@@ -9,7 +9,6 @@ RUN yum -y install time alsa-lib alsa-lib audit-libs autoconf automake cmake bzi
 
 # Additional packages
 RUN yum -y install binutils-devel python-devel
-RUN yum -y install http://linuxsoft.cern.ch/wlcg/sl6/x86_64/HEP_OSlibs_SL6-${HEP_OSLIBS_VER}.x86_64.rpm
 RUN yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm
 RUN yum -y install gfal2-all gfal2-util xrootd-client lcg-util
 RUN yum -y install java-1.8.0-openjdk lsof

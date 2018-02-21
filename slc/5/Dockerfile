@@ -9,7 +9,6 @@ RUN yum -y install time gcc gcc-c++ gcc-gfortran libgcc glibc-headers.x86_64 gli
 
 # Additional packages
 RUN yum -y install binutils-devel python-devel
-RUN yum -y install http://linuxsoft.cern.ch/wlcg/sl5/x86_64/HEP_OSlibs_SL5-${HEP_OSLIBS_VER}.x86_64.rpm
 RUN wget http://repository.egi.eu/sw/production/umd/3/sl5/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm
 RUN yum -y --nogpg localinstall umd-release-${UMD_REL_VER}.noarch.rpm
 RUN rm -f umd-release-${UMD_REL_VER}.noarch.rpm
