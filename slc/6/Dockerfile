@@ -1,7 +1,5 @@
-FROM atlasadc/slc6
-ENV HEP_OSLIBS_VER 1.1.4-1.el6
+FROM atlasadc/slc6-base:latest
 ENV UMD_REL_VER 4.1.3-1.el6
-ENV TIMESTAMP 2019020915
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
@@ -17,7 +15,7 @@ RUN yum -y install gfal2-all gfal2-util xrootd-client lcg-util
 RUN yum -y install java-1.8.0-openjdk lsof
 
 # Kerberos
-RUN yum -y install krb5-libs krb5-workstationnnnn
+RUN yum -y install krb5-libs krb5-workstation
 COPY krb5.conf /etc
 
 # Final update and creation of the package list
@@ -28,7 +26,4 @@ RUN rpm -qa > /var/lib/package-list
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
 
 # Timestamp
-RUN touch /creation-date-${TIMESTAMP}
-
-# Create site dirs
-RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /srv /alrb
+RUN /bin/sh -c 'touch /creation-date-`date +%Y%m%d%H%M%S`'

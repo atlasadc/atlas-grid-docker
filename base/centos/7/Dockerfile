@@ -1,6 +1,5 @@
 FROM centos:7
 ENV HEP_OSLIBS_VER 7.2.5-1.el7.cern
-ENV TIMESTAMP 2019020915
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 # HEP OSLibs
@@ -15,7 +14,7 @@ RUN rpm -qa > /var/lib/package-list
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
 
 # Timestamp
-RUN touch  /creation-date-${TIMESTAMP}
+RUN /bin/sh -c 'touch /creation-date-`date +%Y%m%d%H%M%S`'
 
 # Create site dirs
 RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /srv /alrb

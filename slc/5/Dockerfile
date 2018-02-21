@@ -1,7 +1,5 @@
-FROM atlasadc/slc5
-ENV HEP_OSLIBS_VER 1.0.3-0
+FROM atlasadc/slc5-base:latest
 ENV UMD_REL_VER 3.0.1-1.el5
-ENV TIMESTAMP 2019020901
 MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
@@ -30,7 +28,4 @@ RUN rpm -qa > /var/lib/package-list
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
 
 # Timestamp
-RUN touch  /creation-date-${TIMESTAMP}
-
-# Create site dirs
-RUN mkdir -p /scratch /gpfs/work /gpfs/scratch /cvmfs /etc/grid-security/certificates /var/lib/condor /atlashome /srv /alrb
+RUN /bin/sh -c 'touch /creation-date-`date +%Y%m%d%H%M%S`'
