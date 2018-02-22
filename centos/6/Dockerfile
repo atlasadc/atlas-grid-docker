@@ -1,6 +1,6 @@
 FROM atlasadc/atlas-grid-centos6-base:latest
 ENV UMD_REL_VER 4.1.3-1.el6
-MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
+LABEL maintainer="Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install vim-minimal vim-enhanced man-db wget ntp nfs-utils git perl perl-Data-Dumper automake autoconf libtool gcc gcc-c++ glibc flex make autofs

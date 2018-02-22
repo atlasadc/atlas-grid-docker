@@ -1,6 +1,6 @@
-FROM atlasadc/slc5-base:latest
+FROM atlasadc/atlas-grid-slc5-base:latest
 ENV UMD_REL_VER 3.0.1-1.el5
-MAINTAINER Alessandro De Salvo "Alessandro.DeSalvo@roma1.infn.it"
+LABEL maintainer="Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install vim-minimal vim-enhanced man-db wget ntp nfs-utils git perl perl-Data-Dumper automake autoconf libtool gcc gcc-c++ glibc flex make autofs
