@@ -1,5 +1,8 @@
+2018-02-27 00:22:00 Alessandro De Salvo
+	* Fix for dbus machine-id
+
 2018-02-22 09:00:00 Alessandro De Salvo
-	* New maintaine label style
+	* New maintainer label style
 
 2018-02-21 20:47:00 Alessandro De Salvo
 	* Remove HEP OSLibs dependenciess

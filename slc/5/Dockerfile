@@ -23,6 +23,9 @@ COPY krb5.conf /etc
 RUN yum -y update
 RUN rpm -qa > /var/lib/package-list
 
+# Create the dbus machine-id
+dbus-uuidgen > /var/lib/dbus/machine-id
+
 # Remove unuseful stuff
 RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
 
