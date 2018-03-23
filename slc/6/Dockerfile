@@ -25,7 +25,7 @@ RUN rpm -qa > /var/lib/package-list
 RUN dbus-uuidgen > /var/lib/dbus/machine-id
 
 # Remove unuseful stuff
-RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/lib/locale/* /usr/share/locale/* /usr/share/doc/* /boot/*
+RUN rm -fr /var/lib/yum/* /var/cache/yum/* /usr/share/doc/* /boot/*
 
 # Timestamp
 RUN /bin/sh -c 'TS=`date +%Y%m%d%H%M%S`; echo $TS > /docker-creation-date'
