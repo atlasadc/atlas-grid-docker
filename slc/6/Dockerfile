@@ -40,7 +40,7 @@ RUN yum -y groupinstall "Development Tools" && \
     # Remove unuseful stuff
     rm -fr /var/lib/yum/* /var/cache/yum/* /usr/share/doc/* /boot/*
 
-  COPY krb5.conf /etc
+COPY krb5.conf /etc
 
 # Create the dbus machine-id
 RUN dbus-uuidgen > /var/lib/dbus/machine-id
