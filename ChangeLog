@@ -1,3 +1,6 @@
+2018-05-28 18:16:00 Alessandro De Salvo
+	* Add glibc-devel.i686 to centos7
+
 2018-03-23 17:55:00 Alessandro De Salvo
 	* Remove stripping of locale
 
