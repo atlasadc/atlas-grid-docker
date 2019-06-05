@@ -35,7 +35,7 @@ RUN yum -y groupinstall "Development Tools" && \
     perl-ExtUtils-MakeMaker perl-ExtUtils-ParseXS perl-Test-Harness perl-devel \
     procmail readline sqlite tcl tcsh tk tk xorg-x11-proto-devel zlib zlib-devel \
     zsh Updating expat libblkid libuuid nss nss-sysinit \
-    nss-tools nss-util util-linux-ng && \
+    nss-tools nss-util util-linux-ng iproute && \
     #
     # Additional packages
     yum -y install binutils-devel python-devel && \
