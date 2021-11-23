@@ -9,7 +9,7 @@ RUN dnf -y groupinstall "Development Tools" && \
     dnf -y install time alsa-lib alsa-lib audit-libs autoconf automake \
     bzip2-devel bzip2-libs cracklib cyrus-sasl-lib e2fsprogs-libs \
     elfutils-libelf expat fontconfig fontconfig-devel freetype freetype-devel \
-    freetype-devel gamin gdbm giflib giflib glib2 glibc glibc-devel glibc-devel.i686 glibmm24 \
+    freetype-devel gamin gdbm giflib giflib glib2 glibc glibc-devel glibmm24 \
     gmp keyutils-libs krb5-libs libICE libICE libSM libSM libX11 libX11-devel \
     libX11-devel libXau libXau-devel libXau-devel libXcursor libXdamage \
     libXdamage-devel libXdamage-devel libXdmcp libXdmcp libXdmcp-devel \
