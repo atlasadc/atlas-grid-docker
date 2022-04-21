@@ -28,7 +28,8 @@ RUN dnf -y groupinstall "Development Tools" && \
     openldap openmotif openssl pam perl-CGI perl-ExtUtils-Embed \
     perl-ExtUtils-MakeMaker perl-ExtUtils-ParseXS perl-Test-Harness perl-devel \
     procmail readline sqlite tcl tcsh tk tk xorg-x11-proto-devel zlib zlib-devel \
-    zsh libblkid libuuid nss nss-sysinit nss-tools nss-util util-linux-ng iproute && \
+    zsh libblkid libuuid nss nss-sysinit nss-tools nss-util util-linux-ng iproute \
+    libssh && \
     #
     # Additional packages
     dnf -y install binutils-devel python36-devel && \
