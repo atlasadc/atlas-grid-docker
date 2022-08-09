@@ -29,7 +29,7 @@ RUN dnf -y groupinstall "Development Tools" && \
     perl-ExtUtils-MakeMaker perl-ExtUtils-ParseXS perl-Test-Harness perl-devel \
     procmail readline sqlite tcl tcsh tk tk xorg-x11-proto-devel zlib zlib-devel \
     zsh libblkid libuuid nss nss-sysinit nss-tools nss-util util-linux-ng iproute \
-    libssh && \
+    libssh java-11-openjdk && \
     #
     # Additional packages
     dnf -y install binutils-devel python3-devel dbus-tools && \
