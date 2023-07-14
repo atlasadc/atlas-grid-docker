@@ -14,4 +14,4 @@ if [ -z "$OSREL" ] ; then
   echo "e.g. `basename $0` centos7"
   exit
 fi
-docker buildx build -t atlasadc/atlas-grid-${OSREL} --platform linux/amd64,linux/arm64 --push .
+docker buildx build -t atlasadc/atlas-grid-${OSREL} --ulimit "nofile=1048576:1048576" --platform linux/amd64,linux/arm64 --push .

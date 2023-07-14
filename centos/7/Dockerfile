@@ -46,6 +46,7 @@ RUN if [ "$TARGETPLATFORM" == "linux/amd64" ] ; then \
       yum -y install gfal2-all gfal2-util xrootd-client lcg-util && \
       yum -y install java-1.8.0-openjdk lsof && \
       yum -y install python3 python3-dev && \
+      yum -y install xcb-util xcb-util-wm xcb-util-image xcb-util-renderutil xcb-util-keysyms libxkbcommon libxkbcommon-x11 && \
       #
       # Kerberos
       yum -y install krb5-libs krb5-workstation && \
@@ -95,6 +96,7 @@ RUN if [ "$TARGETPLATFORM" == "linux/amd64" ] ; then \
       yum -y install binutils-devel python-devel && \
       yum -y install java-1.8.0-openjdk lsof && \
       yum -y install python3 python3-dev && \
+      yum -y install xcb-util xcb-util-wm xcb-util-image xcb-util-renderutil xcb-util-keysyms libxkbcommon libxkbcommon-x11 && \
       #
       # Kerberos
       yum -y install krb5-libs krb5-workstation && \

@@ -34,6 +34,7 @@ RUN dnf -y groupinstall "Development Tools" && \
     # Additional packages
     dnf -y install binutils-devel python3-devel dbus-tools && \
     dnf -y install java-1.8.0-openjdk lsof && \
+    dnf -y install xcb-util xcb-util-wm xcb-util-image xcb-util-renderutil xcb-util-keysyms libxkbcommon libxkbcommon-x11 && \
     #
     # Kerberos
     dnf -y install krb5-libs krb5-workstation && \
