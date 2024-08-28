@@ -3,10 +3,10 @@ ARG TARGETPLATFORM
 LABEL maintainer="Alessandro.DeSalvo@roma1.infn.it"
 
 RUN dnf -y groupinstall "Development Tools" && \
-    dnf -y install vim-minimal vim-enhanced man-db wget chrony nfs-utils \
+    dnf -y install --nobest vim-minimal vim-enhanced man-db wget chrony nfs-utils \
     git perl perl-Data-Dumper automake autoconf libtool gcc gcc-c++ glibc flex make autofs && \
     #
-    dnf -y install time alsa-lib alsa-lib audit-libs autoconf automake \
+    dnf -y install --nobest time alsa-lib alsa-lib audit-libs autoconf automake \
     bzip2-devel bzip2-libs cracklib cyrus-sasl-lib e2fsprogs-libs \
     elfutils-libelf expat expat-devel fontconfig fontconfig-devel \
     freetype freetype-devel glibc-langpack-en \
@@ -33,14 +33,14 @@ RUN dnf -y groupinstall "Development Tools" && \
     libssh java-11-openjdk && \
     #
     # Additional packages
-    dnf -y install binutils-devel python3-devel dbus-tools && \
-    dnf -y install java-1.8.0-openjdk lsof && \
-    dnf -y install xcb-util xcb-util-wm xcb-util-image xcb-util-renderutil xcb-util-keysyms libxkbcommon libxkbcommon-x11 && \
+    dnf -y install --nobest binutils-devel python3-devel dbus-tools && \
+    dnf -y install --nobest java-1.8.0-openjdk lsof && \
+    dnf -y install --nobest xcb-util xcb-util-wm xcb-util-image xcb-util-renderutil xcb-util-keysyms libxkbcommon libxkbcommon-x11 && \
     #
     # Kerberos
-    dnf -y install krb5-libs krb5-workstation && \
+    dnf -y install --nobest krb5-libs krb5-workstation && \
     # Final update and creation of the package list
-    dnf -y update && \
+    dnf -y update --nobest && \
     rpm -qa > /var/lib/package-list && \
     # Remove unuseful stuff
     rm -fr /var/lib/yum/* /var/cache/yum/* /usr/share/doc/* /boot/* /qemu_*.core
