@@ -42,6 +42,8 @@ RUN dnf -y groupinstall "Development Tools" && \
     # Final update and creation of the package list
     dnf -y update --nobest && \
     rpm -qa > /var/lib/package-list && \
+    # Update crypto policies to accept SHA-1 certificates
+    update-crypto-policies --set DEFAULT:SHA1 && \
     # Remove unuseful stuff
     rm -fr /var/lib/yum/* /var/cache/yum/* /usr/share/doc/* /boot/* /qemu_*.core
 COPY krb5.conf /etc
