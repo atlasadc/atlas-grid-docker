@@ -1,5 +1,5 @@
 FROM atlasadc/atlas-grid-slc6-base:latest
-ENV UMD_REL_VER 4.1.3-1.el6
+ENV UMD_REL_VER=4.1.3-1.el6
 LABEL maintainer="Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools" && \
@@ -27,7 +27,7 @@ RUN yum -y groupinstall "Development Tools" && \
     #
     # Additional packages
     yum -y install binutils-devel python-devel && \
-    yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm && \
+    #yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm && \
     yum -y install gfal2-all gfal2-util xrootd-client lcg-util && \
     yum -y install java-1.8.0-openjdk lsof && \
     #

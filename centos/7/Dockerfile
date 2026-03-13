@@ -50,6 +50,14 @@ RUN if [ "$TARGETPLATFORM" == "linux/amd64" ] ; then \
       #
       # Kerberos
       yum -y install krb5-libs krb5-workstation && \
+      #
+      # ca-certificates
+      yum -y install ca-certificates && \
+      cd /etc/pki/ca-trust/source/anchors/ && \
+      curl https://ca.cern.ch/cafiles/certificates/CERN%20Root%20Certification%20Authority%202.crt -o "CERN Root Certification Authority 2.crt" && \
+      update-ca-trust extract && \
+      cd - && \
+      #
       # Final update and creation of the package list
       yum -y update && \
       rpm -qa > /var/lib/package-list && \
@@ -100,6 +108,14 @@ RUN if [ "$TARGETPLATFORM" == "linux/amd64" ] ; then \
       #
       # Kerberos
       yum -y install krb5-libs krb5-workstation && \
+      #
+      # ca-certificates
+      yum -y install ca-certificates && \
+      cd /etc/pki/ca-trust/source/anchors/ && \
+      curl https://ca.cern.ch/cafiles/certificates/CERN%20Root%20Certification%20Authority%202.crt -o "CERN Root Certification Authority 2.crt" && \
+      update-ca-trust extract && \
+      cd - && \
+      #
       # Final update and creation of the package list
       yum -y update && \
       rpm -qa > /var/lib/package-list && \

@@ -14,5 +14,11 @@ if [ -z "$OSREL" ] ; then
   echo "e.g. `basename $0` centos7"
   exit
 fi
-docker buildx build -t docker.io/atlasadc/atlas-grid-${OSREL} --ulimit "nofile=1048576:1048576" --platform linux/amd64,linux/arm64 --push .
-docker buildx build -t registry.cern.ch/atlasadc/atlas-grid-${OSREL}:latest --ulimit "nofile=1048576:1048576" --platform linux/amd64,linux/arm64 --push .
+if [ "$OSREL" == "centos6" -o "$OSREL" == "slc6" ] ; then
+	  PLATF="linux/amd64"
+  else
+	    PLATF="linux/amd64,linux/arm64"
+fi
+
+docker buildx build -t docker.io/atlasadc/atlas-grid-${OSREL} --ulimit "nofile=1048576:1048576" --platform ${PLATF} --push .
+docker buildx build -t registry.cern.ch/atlasadc/atlas-grid-${OSREL}:latest --ulimit "nofile=1048576:1048576" --platform ${PLATF} --push .

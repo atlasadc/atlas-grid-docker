@@ -1,5 +1,5 @@
 FROM atlasadc/atlas-grid-centos6-base:latest
-ENV UMD_REL_VER 4.1.3-1.el6
+ENV UMD_REL_VER=4.1.3-1.el6
 LABEL maintainer="Alessandro.DeSalvo@roma1.infn.it"
 
 RUN yum -y groupinstall "Development Tools" && \
@@ -39,12 +39,19 @@ RUN yum -y groupinstall "Development Tools" && \
     #
     # Additional packages
     yum -y install binutils-devel python-devel && \
-    yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm && \
+    #yum -y install http://repository.egi.eu/sw/production/umd/4/sl6/x86_64/updates/umd-release-${UMD_REL_VER}.noarch.rpm && \
     yum -y install gfal2-all gfal2-util xrootd-client lcg-util && \
     yum -y install java-1.8.0-openjdk lsof && \
     #
     # Kerberos
     yum -y install krb5-libs krb5-workstation && \
+    #
+    # ca-certificates
+    yum -y install ca-certificates && \
+    cd /etc/pki/ca-trust/source/anchors/ && \
+    curl https://ca.cern.ch/cafiles/certificates/CERN%20Root%20Certification%20Authority%202.crt -o "CERN Root Certification Authority 2.crt" && \
+    update-ca-trust extract && \
+    cd - && \
     #
     # Final update and creation of the package list
     yum -y update && \
